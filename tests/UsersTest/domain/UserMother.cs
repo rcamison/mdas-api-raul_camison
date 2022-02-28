@@ -18,5 +18,13 @@ namespace UsersTest.Domain
         {
             return User.Create(userId, userName);
         }
+
+        public static User Random_With_A_Favourite(UserId userId, UserName userName, PokemonFavorite pokemonFavorite)
+        {
+            var user =  User.Create(userId, userName);
+            user.AddPokemonFavorite(pokemonFavorite);
+
+            return user;
+        }
     }
 }

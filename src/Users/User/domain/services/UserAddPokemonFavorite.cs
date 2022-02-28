@@ -16,7 +16,7 @@
 
             var user = _userRepository.Find(userId);
 
-            user.PokemonFavorites.AddPokemonFavorite(pokemonFavorite);
+            user.AddPokemonFavorite(pokemonFavorite);
 
             _userRepository.Save(user);
         }
