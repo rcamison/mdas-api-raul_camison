@@ -1,6 +1,8 @@
-﻿namespace Users.User.Domain
+﻿using Shared.Events.Domain;
+
+namespace Users.User.Domain
 {
-    public class User
+    public class User : EntityBase
     {
         private readonly UserId _userId;
         private readonly UserName _userName;
@@ -22,17 +24,24 @@
         public UserName UserName => _userName;
         public PokemonFavoritesCollection PokemonFavorites => _pokemonFavorites;
 
-        public void AddPokemonFavorite(PokemonFavorite favorite)
+        public void AddPokemonFavorite(PokemonFavorite pokemonFavorite)
         {
-            GuardAgainstPokemonFavoriteAlreadyExist(favorite);
+            GuardAgainstPokemonFavoriteAlreadyExist(pokemonFavorite);
 
-            _pokemonFavorites.Add(favorite);
+            _pokemonFavorites.Add(pokemonFavorite);
+
+            AddDomainEvent(new PokemonFavoriteCreatedEvent(new EventAggregateId(pokemonFavorite.PokemonId.Value.ToString())));
         }
+
+        #region Metodos privados
 
         private void GuardAgainstPokemonFavoriteAlreadyExist(PokemonFavorite favorite)
         {
             if (_pokemonFavorites.Any(p => p.PokemonId == favorite.PokemonId))
                 throw new PokemonFavoriteAlreadyExistException();
         }
+
+        #endregion
+
     }
 }
