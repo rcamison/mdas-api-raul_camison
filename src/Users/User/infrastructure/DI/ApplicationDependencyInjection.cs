@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using Users.User.Application;
 
 namespace Users.User.Infrastructure
@@ -10,6 +11,7 @@ namespace Users.User.Infrastructure
         {
             services.AddTransient<CreateUserUseCase>();
             services.AddTransient<AddPokemonFavoriteUseCase>();
+            services.AddMediatR(typeof(AddPokemonFavoriteUseCase).Assembly);
             return services;
         }
     }
