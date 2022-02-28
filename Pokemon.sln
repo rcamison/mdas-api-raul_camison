@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{E254D1
 		docker-compose-Reto1.yml = docker-compose-Reto1.yml
 		docker-compose-Reto2.yml = docker-compose-Reto2.yml
 		docker-compose-Reto3.yml = docker-compose-Reto3.yml
+		docker-compose-RetoIndividual.yml = docker-compose-RetoIndividual.yml
 		docker-compose.yml = docker-compose.yml
 		deploy\Dockerfile = deploy\Dockerfile
 		deploy\Dockerfile-Reto1 = deploy\Dockerfile-Reto1

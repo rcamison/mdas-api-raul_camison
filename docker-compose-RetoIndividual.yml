@@ -3,7 +3,7 @@ version: '3.6'
 services:
 
   epokemon.pokemons:
-    image: mdas-api-g2.pokemons
+    image: mdas-api-raul_camison.pokemons
     container_name: pokemon
     build:
       context: .
@@ -15,7 +15,7 @@ services:
       - epokemonnet
 
   epokemon.users:
-    image: mdas-api-g2.userfavorites
+    image: mdas-api-raul_camison.userfavorites
     container_name: userfavorite
     build:
       context: .
@@ -27,7 +27,7 @@ services:
       - epokemonnet
 
   epokemon.tests:
-    image: mdas-api-g2.tests
+    image: mdas-api-raul_camison.tests
     container_name: test
     build:
       context: .
@@ -38,16 +38,20 @@ services:
     networks:
       - epokemonnet
 
-  rabbitmq3:
-    container_name: "mdas-api-g2.rabbitmq"
-    image: rabbitmq:3.8-management-alpine
+  epokemon.rabbitmq:
+    container_name: "mdas-api-raul_camison.rabbitmq"
+    image: rabbitmq:3.9-management
     environment:
-        - RABBITMQ_DEFAULT_USER=netcoders
-        - RABBITMQ_DEFAULT_PASS=netcoders
-        - RABBITMQ_DEFAULT_VHOST=netcoders
+        - RABBITMQ_DEFAULT_USER=raulcamison
+        - RABBITMQ_DEFAULT_PASS=camisonraul
+        - RABBITMQ_DEFAULT_VHOST=raulcamisonhost
     ports:
-        - '5672:5672'
-        - '15672:15672'
+        - "4369:4369"
+        - "5671:5671"
+        - "5672:5672"
+        - "25672:25672"
+        - "15671:15671"
+        - "15672:15672"
     networks:
       - epokemonnet  
 
