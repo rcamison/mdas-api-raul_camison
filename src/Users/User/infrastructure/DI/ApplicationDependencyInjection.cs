@@ -1,14 +1,17 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Users.User.Application;
 
-namespace Users.User.Infrastructure;
-
-public static class ApplicationDependencyInjection
+namespace Users.User.Infrastructure
 {
-    public static IServiceCollection AddApplications(this IServiceCollection services)
+
+    public static class ApplicationDependencyInjection
     {
-        services.AddTransient<CreateUserUseCase>();
-        services.AddTransient<AddPokemonFavoriteUseCase>();
-        return services;
+        public static IServiceCollection AddApplications(this IServiceCollection services)
+        {
+            services.AddTransient<CreateUserUseCase>();
+            services.AddTransient<AddPokemonFavoriteUseCase>();
+            return services;
+        }
     }
+
 }

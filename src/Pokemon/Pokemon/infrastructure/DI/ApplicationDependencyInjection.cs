@@ -1,13 +1,16 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Pokemon.Pokemon.Application;
 
-namespace Pokemon.Pokemon.Infrastructure;
-
-public static class ApplicationDependencyInjection
+namespace Pokemon.Pokemon.Infrastructure
 {
-    public static IServiceCollection AddPokemonApplication(this IServiceCollection services)
+
+    public static class ApplicationDependencyInjection
     {
-        services.AddTransient<GetPokemonByPokemonIdUseCase>();
-        return services;
+        public static IServiceCollection AddPokemonApplication(this IServiceCollection services)
+        {
+            services.AddTransient<GetPokemonByPokemonIdUseCase>();
+            return services;
+        }
     }
+
 }

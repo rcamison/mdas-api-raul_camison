@@ -1,16 +1,19 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Users.User.Domain;
 
-namespace Users.User.Infrastructure;
-
-public static class PersistenceDependencyInjection
+namespace Users.User.Infrastructure
 {
-    public static IServiceCollection AddPersistences(this IServiceCollection services)
+
+    public static class PersistenceDependencyInjection
     {
+        public static IServiceCollection AddPersistences(this IServiceCollection services)
+        {
 
-        services.AddScoped<IUserRepository, InMemoryUserRepository>();
-        services.AddSingleton<UserContext>();
+            services.AddScoped<IUserRepository, InMemoryUserRepository>();
+            services.AddSingleton<UserContext>();
 
-        return services;
+            return services;
+        }
     }
+
 }
