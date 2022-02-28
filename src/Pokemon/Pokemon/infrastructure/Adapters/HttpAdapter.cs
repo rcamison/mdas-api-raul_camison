@@ -4,14 +4,14 @@ namespace Pokemon.Pokemon.Infrastructure
 {
     internal static class HttpAdapter
     {
-        public static Domain.Pokemon PokeApiPokemonDtoToPokemon(PokeApiPokemonDto pokeApiPokemonDto)
+        public static Domain.Pokemon PokeApiPokemonDtoToPokemon(PokeApiPokemonDto pokeApiPokemonDto, PokemonFavouriteNumberOfTimes pokemonFavouriteNumberOfTimes)
         {
             var pokemonId = new PokemonId(pokeApiPokemonDto.Id);
             var pokemonName = new PokemonName(pokeApiPokemonDto.Name);
             var pokemonHeight = new PokemonHeight(pokeApiPokemonDto.Height);
             var pokemonWeight = new PokemonWeight(pokeApiPokemonDto.Weight);
 
-            return Domain.Pokemon.Create(pokemonId, pokemonName, pokemonHeight, pokemonWeight);
+            return Domain.Pokemon.Create(pokemonId, pokemonName, pokemonHeight, pokemonWeight, pokemonFavouriteNumberOfTimes);
         }
 
     }

@@ -12,11 +12,13 @@ namespace Pokemon.Pokemon.Infrastructure
     {
         private readonly HttpClient _pokemonClient;
         private const string PokemonUrl = "https://pokeapi.co/api/v2/pokemon/";
+        private readonly InMemoryPokemonFavouriteRepository _inMemoryPokemonRepository;
 
-        public PokeApiPokemonRepository(HttpClient httpClient)
+        public PokeApiPokemonRepository(HttpClient httpClient, InMemoryPokemonFavouriteRepository inMemoryPokemonRepository)
         {
             _pokemonClient = httpClient;
             _pokemonClient.BaseAddress = new Uri(PokemonUrl);
+            _inMemoryPokemonRepository = inMemoryPokemonRepository;
         }
 
         public bool Exists(PokemonId pokemonId)
@@ -29,9 +31,16 @@ namespace Pokemon.Pokemon.Infrastructure
         public Domain.Pokemon Find(PokemonId pokemonId)
         {
             var pokemonDto = FindByPokemonIdAsync(pokemonId.Value).Result;
+            var pokemonFavouriteNumberOfTimes = _inMemoryPokemonRepository.Search(pokemonId);
+            
+            Domain.Pokemon pokemon = HttpAdapter.PokeApiPokemonDtoToPokemon(pokemonDto, pokemonFavouriteNumberOfTimes);
 
-            Domain.Pokemon pokemon = HttpAdapter.PokeApiPokemonDtoToPokemon(pokemonDto);
             return pokemon;
+        }
+
+        public void Save(Domain.Pokemon pokemon)
+        {
+            _inMemoryPokemonRepository.Save(pokemon.PokemonId, pokemon.PokemonFavouriteNumberOfTimes);
         }
 
         #region Private Methods
@@ -77,7 +86,6 @@ namespace Pokemon.Pokemon.Infrastructure
                 }
             }
         }
-
 
         #endregion
 
