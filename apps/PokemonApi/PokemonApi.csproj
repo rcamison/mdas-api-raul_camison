@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Pokemon\Pokemon.csproj" />
+    <ProjectReference Include="..\..\src\Shared\Shared.csproj" />
   </ItemGroup>
 
 </Project>

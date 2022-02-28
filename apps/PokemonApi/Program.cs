@@ -1,6 +1,7 @@
 using Microsoft.OpenApi.Models;
 using Pokemon.Pokemon.Infrastructure;
 using Pokemon.Type.Infrastructure;
+using Shared.Events.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,8 @@ builder.Services.AddTypeDomain();
 builder.Services.AddTypeInfrastructure();
 
 builder.Services.AddHttpClient<PokeApiHttpClient>();
+
+builder.Services.AddEventsInfrastructure();
 
 builder.Services.AddEndpointsApiExplorer();
 
