@@ -12,7 +12,8 @@ namespace PokemonApi
                 Id = pokemon.PokemonId.Value,
                 Name = pokemon.PokemonName.Value,
                 Height = pokemon.PokemonHeight.Value,
-                Weight = pokemon.PokemonWeight.Value
+                Weight = pokemon.PokemonWeight.Value,
+                FavoriteTimes = pokemon.PokemonFavouriteNumberOfTimes.Value
             };
 
             return getPokemonDto;
