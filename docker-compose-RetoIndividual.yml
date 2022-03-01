@@ -39,7 +39,7 @@ services:
       - epokemonnet
 
   epokemon.rabbitmq:
-    container_name: "mdas-api-raul_camison.rabbitmq"
+    container_name: rabbitmq
     image: rabbitmq:3.9-management
     environment:
         - RABBITMQ_DEFAULT_USER=raulcamison
