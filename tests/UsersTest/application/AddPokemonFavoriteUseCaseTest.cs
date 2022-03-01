@@ -1,4 +1,6 @@
+using MediatR;
 using Moq;
+using Shared.Events.Domain;
 using Users.User.Application;
 using Users.User.Domain;
 using Users.User.Infrastructure;
@@ -17,9 +19,10 @@ namespace UsersTest.Application
             var userId = UserIdMother.Random(userGuid);
             var user = UserMother.Random(userId, It.IsAny<UserName>());
             var pokemonId = PokemonIdMother.Random();
-            var userAddPokemonFavorite = new Mock<UserAddPokemonFavorite>(It.IsAny<IUserRepository>());
+            var userAddPokemonFavorite = new Mock<UserAddPokemonFavorite>(It.IsAny<IUserRepository>(), It.IsAny<IMediator>());
             userAddPokemonFavorite.Setup(_ => _.Execute(It.IsAny<UserId>(), It.IsAny<PokemonFavorite>()));
-            var addPokemonFavoriteUseCase = new AddPokemonFavoriteUseCase(userAddPokemonFavorite.Object);
+            var eventBus = new Mock<IEventBus>();
+            var addPokemonFavoriteUseCase = new AddPokemonFavoriteUseCase(userAddPokemonFavorite.Object, eventBus.Object);
 
             //When
             addPokemonFavoriteUseCase.Execute(user.Id.Value, pokemonId.Value);
