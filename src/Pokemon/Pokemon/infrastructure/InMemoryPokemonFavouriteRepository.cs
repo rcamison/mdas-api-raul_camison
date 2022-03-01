@@ -10,7 +10,11 @@ namespace Pokemon.Pokemon.Infrastructure
 
         public void Save(PokemonId pokemonId, PokemonFavouriteNumberOfTimes numberOfTimes)
         {
-            _pokemons.Add(pokemonId.Value, numberOfTimes.Value);
+            if (!_pokemons.ContainsKey(pokemonId.Value))
+                _pokemons.Add(pokemonId.Value, 0);
+
+            _pokemons[pokemonId.Value] = numberOfTimes.Value;
+
         }
 
         public PokemonFavouriteNumberOfTimes Search(PokemonId pokemonId)

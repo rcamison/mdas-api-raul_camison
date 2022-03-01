@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Pokemon.Pokemon.Domain
 {
     public class PokemonCreator
@@ -18,7 +20,7 @@ namespace Pokemon.Pokemon.Domain
             var pokemon = _pokemonRepository.Find(pokemonId);
             pokemon.IncreasePokemonFavouriteNumberOfTimes();
 
-            Domain.Pokemon.Create(pokemonId, pokemon.PokemonName, pokemon.PokemonHeight, pokemon.PokemonWeight, pokemon.PokemonFavouriteNumberOfTimes);
+            pokemon = Domain.Pokemon.Create(pokemonId, pokemon.PokemonName, pokemon.PokemonHeight, pokemon.PokemonWeight, pokemon.PokemonFavouriteNumberOfTimes);
             _pokemonRepository.Save(pokemon);
         }
     }

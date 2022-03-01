@@ -1,4 +1,6 @@
-﻿namespace Pokemon.Pokemon.Domain
+﻿using System;
+
+namespace Pokemon.Pokemon.Domain
 {
     public class Pokemon
     {

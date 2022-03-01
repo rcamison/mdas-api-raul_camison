@@ -25,7 +25,6 @@ namespace Pokemon.Pokemon.Infrastructure
             await _eventBus.Consume<PokemonFavoriteCreatedEvent>("UserExchange", "UserPokemonFavorites", "Pokemon added to user Favorites",
                 @event =>
                 {
-                    Console.WriteLine("ExecuteAsync");
                     Task.Run(() => { TreatEvent(@event); }, stoppingToken);
                 }
                 );
@@ -34,7 +33,6 @@ namespace Pokemon.Pokemon.Infrastructure
 
         private void TreatEvent(PokemonFavoriteCreatedEvent @event)
         {
-            Console.WriteLine("treatevent");
             _pokemonNotifierUseCase.Execute(int.Parse(@event.EventAggregateId));
         }
     }
