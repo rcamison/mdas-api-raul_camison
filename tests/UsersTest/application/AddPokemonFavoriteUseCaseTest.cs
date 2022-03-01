@@ -1,3 +1,4 @@
+using System.Threading;
 using MediatR;
 using Moq;
 using Shared.Events.Domain;
@@ -29,6 +30,24 @@ namespace UsersTest.Application
 
             //Then
             userAddPokemonFavorite.Verify(v => v.Execute(It.IsAny<UserId>(), It.IsAny<PokemonFavorite>()));
+        }
+
+        [Fact]
+        public void Should_Publish_A_PokemonFavoriteCreatedEvent()
+        {
+            //Given
+            var eventBus = new Mock<IEventBus>();
+
+            var pokemonFavoriteCreatedEvent = PokemonFavoriteCreatedEventMother.Random();
+            CancellationToken cancellationToken = new CancellationToken();
+            var userAddPokemonFavorite = new Mock<UserAddPokemonFavorite>(It.IsAny<IUserRepository>(), It.IsAny<IMediator>());
+            var addPokemonFavoriteUseCase = new AddPokemonFavoriteUseCase(userAddPokemonFavorite.Object, eventBus.Object);
+
+            //When
+            addPokemonFavoriteUseCase.Handle(pokemonFavoriteCreatedEvent, cancellationToken);
+
+            //Then
+            eventBus.Verify(v => v.Publish(It.IsAny<string>(), It.IsAny<string>(), pokemonFavoriteCreatedEvent));
         }
     }
 }
