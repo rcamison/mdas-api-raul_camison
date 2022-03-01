@@ -3,16 +3,16 @@ namespace Shared.Events.Domain
 {
     public class Event
     {
-        private readonly EventMessage _eventMessage;
-        private readonly EventAggregateId _eventAggregateId;
+        private readonly String _eventMessage;
+        private readonly String _eventAggregateId;
 
-        public Event(EventMessage eventMessage, EventAggregateId eventAggregateId)
+        public Event(String eventMessage, String eventAggregateId)
         {
             _eventMessage = eventMessage;
             _eventAggregateId = eventAggregateId;
         }
 
-        public EventMessage EventMessage { get { return _eventMessage; } }
-        public EventAggregateId EventAggregateId { get { return _eventAggregateId; } }
+        public String EventMessage { get { return _eventMessage; } }
+        public String EventAggregateId { get { return _eventAggregateId; } }
     }
 }

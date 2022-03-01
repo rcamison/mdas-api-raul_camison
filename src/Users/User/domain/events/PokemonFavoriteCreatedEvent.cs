@@ -5,7 +5,7 @@ namespace Users.User.Domain
 {
     public class PokemonFavoriteCreatedEvent : Event, INotification
     {
-        public PokemonFavoriteCreatedEvent(EventAggregateId eventAggregateId) : base(new EventMessage("Pokemon added to user Favorites"), eventAggregateId)
+        public PokemonFavoriteCreatedEvent(String eventAggregateId) : base("Pokemon added to user Favorites", eventAggregateId)
         {
         }
     }

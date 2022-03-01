@@ -30,7 +30,7 @@ namespace Users.User.Domain
 
             _pokemonFavorites.Add(pokemonFavorite);
 
-            AddDomainEvent(new PokemonFavoriteCreatedEvent(new EventAggregateId(pokemonFavorite.PokemonId.Value.ToString())));
+            AddDomainEvent(new PokemonFavoriteCreatedEvent(pokemonFavorite.PokemonId.Value.ToString()));
         }
 
         #region Metodos privados

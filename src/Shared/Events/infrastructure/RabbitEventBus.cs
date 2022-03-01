@@ -17,7 +17,7 @@ namespace Shared.Events.Infrastructure
             _channel = channel;
         }
 
-        public void Consume<T>(string exchangeName, string queueName, string eventKey, Action<T> onEventReceived) where T : Event
+        public Task Consume<T>(string exchangeName, string queueName, string eventKey, Action<T> onEventReceived) where T : Event
         {
             _channel.ExchangeDeclare(exchangeName, ExchangeType.Direct);
             _channel.QueueDeclare(queueName, true, false, false, null);
@@ -38,6 +38,8 @@ namespace Shared.Events.Infrastructure
 
             _channel.BasicConsume(queue: queueName, autoAck: true, consumer: consumer);
 
+            return Task.CompletedTask;
+
         }
 
         public Task Publish(string exchangeName, string queueName, Event @event)
@@ -53,11 +55,11 @@ namespace Shared.Events.Infrastructure
             {
                 _channel.ExchangeDeclare(exchangeName, ExchangeType.Direct);
                 _channel.QueueDeclare(queueName, true, false, false, null);
-                _channel.QueueBind(queueName, exchangeName, @event.EventMessage.Value, null);
+                _channel.QueueBind(queueName, exchangeName, @event.EventMessage, null);
                 IBasicProperties properties = _channel.CreateBasicProperties();
-                properties.Type = @event.EventMessage.Value;
+                properties.Type = @event.EventMessage;
                 byte[] output = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(@event));
-                _channel.BasicPublish(exchangeName, @event.EventMessage.Value, properties, output);
+                _channel.BasicPublish(exchangeName, @event.EventMessage, properties, output);
             });
         }
 

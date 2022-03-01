@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using System;
+using Microsoft.Extensions.Hosting;
 using Pokemon.Pokemon.Application;
 using Shared.Events.Domain;
 using System.Threading;
@@ -19,28 +20,22 @@ namespace Pokemon.Pokemon.Infrastructure
             _eventBus = eventBus;
         }
 
-        public async void OnUserPokemonFavoriteCreated()
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            //var @event = _eventBus.Consume("", "");
-
-            _pokemonNotifierUseCase.Execute();
-        }
-
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-            _eventBus.Consume("UserExchange", "UserPokemonFavorites", "Pokemon added to user Favorites",
-                    message =>
-                    {
-                        Task.Run(() => { TreatEvent(@event); }, stoppingToken);
-                    }
+            await _eventBus.Consume<PokemonFavoriteCreatedEvent>("UserExchange", "UserPokemonFavorites", "Pokemon added to user Favorites",
+                @event =>
+                {
+                    Console.WriteLine("ExecuteAsync");
+                    Task.Run(() => { TreatEvent(@event); }, stoppingToken);
+                }
                 );
 
-            return Task.CompletedTask;
         }
 
         private void TreatEvent(PokemonFavoriteCreatedEvent @event)
         {
-            _pokemonNotifierUseCase.Execute(int.Parse(@event.EventAggregateId.Value));
+            Console.WriteLine("treatevent");
+            _pokemonNotifierUseCase.Execute(int.Parse(@event.EventAggregateId));
         }
     }
 }
