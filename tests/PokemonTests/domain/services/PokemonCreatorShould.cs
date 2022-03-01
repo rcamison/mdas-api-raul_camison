@@ -4,25 +4,23 @@ using Xunit;
 
 namespace PokemonTests.Domain
 {
-    public class PokemonFinderShould
+    public class PokemonCreatorShould
     {
         [Fact]
-        public void Return_A_Pokemon()
+        public void Create_A_Pokemon()
         {
             //Given
             var pokemonRepository = new Mock<IPokemonRepository>();
             var pokemon = PokemonMother.Random();
             pokemonRepository.Setup(_ => _.Exists(It.IsAny<PokemonId>())).Returns(true);
             pokemonRepository.Setup(_ => _.Find(It.IsAny<PokemonId>())).Returns(pokemon);
-            var _pokemonFinder = new PokemonFinder(pokemonRepository.Object);
+            var _pokemonCreator = new PokemonCreator(pokemonRepository.Object);
 
             //When
-            var result = _pokemonFinder.Execute(PokemonIdMother.Random());
+            _pokemonCreator.Execute(pokemon.PokemonId);
 
             //Then
-            Assert.Equal(pokemon, result);
-            pokemonRepository.Verify(_ => _.Exists(It.IsAny<PokemonId>()), Times.Once);
-            pokemonRepository.Verify(_ => _.Find(It.IsAny<PokemonId>()), Times.Once);
+            pokemonRepository.Verify(v => v.Save(It.IsAny<Pokemon.Pokemon.Domain.Pokemon>()));
         }
 
         [Fact]
@@ -31,12 +29,12 @@ namespace PokemonTests.Domain
             //Given
             var pokemonRepository = new Mock<IPokemonRepository>();
             pokemonRepository.Setup(_ => _.Exists(It.IsAny<PokemonId>())).Returns(false);
-            var _pokemonFinder = new PokemonFinder(pokemonRepository.Object);
+            var _pokemonCreator = new PokemonCreator(pokemonRepository.Object);
 
             //When - Then
-            Assert.Throws<PokemonNotFoundException>(() => _pokemonFinder.Execute(PokemonIdMother.Random()));
+            Assert.Throws<PokemonNotFoundException>(() => _pokemonCreator.Execute(PokemonIdMother.Random()));
             pokemonRepository.Verify(_ => _.Exists(It.IsAny<PokemonId>()), Times.Once);
-            pokemonRepository.Verify(_ => _.Find(It.IsAny<PokemonId>()), Times.Never);
+            pokemonRepository.Verify(_ => _.Save(It.IsAny<Pokemon.Pokemon.Domain.Pokemon>()), Times.Never);
         }
     }
 }
