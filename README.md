@@ -1,4 +1,4 @@
-# Project ePokemon | Raúl Camison
+# Project ePokemon | Raúl Camisón
 
 This project was evolved by **Raúl Camisón** for the course Software Design 2 with the programming language: **C#**
 
@@ -123,11 +123,8 @@ This project was evolved by **Raúl Camisón** for the course Software Design 2 
 
 ### Run App Steps:
 
-Further instructions in each challenge:
+Further instructions:
 
-* #### [Challenge #1](Challenge1.md)
-* #### [Challenge #2](Challenge2.md)
-* #### [Challenge #3](Challenge3.md)
 * #### [Challenge #Individual](ChallengeIndividual.md)
 
 ---
