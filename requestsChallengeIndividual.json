@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "ec5b0795-2702-4e5b-a46f-2107b74b9bd5",
+		"name": "mdas-api-raul_camison",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01 Users.Create User 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Cassiopeia\",\n  \"id\": \"cd7ddb3e-5cac-4333-9bce-241041b66c62\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4080/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4080",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02 Users.Create User 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Centaurus \",\n  \"id\": \"d92290d5-4ecd-4a88-b076-c1fb9ac69f33\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4080/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4080",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "03 Pokemons.Get Pokemon 1 - (Fav = 0)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3080/api/v1/pokemon/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						"v1",
+						"pokemon",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04 Users.Add Pokemon 1 Favorite",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": \"cd7ddb3e-5cac-4333-9bce-241041b66c62\",\n  \"pokemonId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4080/api/v1/users/pokemonfavorite",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"pokemonfavorite"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "05 Pokemons.Get Pokemon 1 - (Fav = 1)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3080/api/v1/pokemon/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						"v1",
+						"pokemon",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "06 Users.Add Pokemon 1 Favorite",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": \"d92290d5-4ecd-4a88-b076-c1fb9ac69f33\",\n  \"pokemonId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4080/api/v1/users/pokemonfavorite",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"pokemonfavorite"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "07 Pokemons.Get Pokemon 1 - (Fav = 2)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3080/api/v1/pokemon/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						"v1",
+						"pokemon",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "08 Pokemons.Get Pokemon 50 - (Fav = 0)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3080/api/v1/pokemon/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						"v1",
+						"pokemon",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "09 Users.Add Pokemon 50 Favorite",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": \"cd7ddb3e-5cac-4333-9bce-241041b66c62\",\n  \"pokemonId\": 50\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4080/api/v1/users/pokemonfavorite",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"pokemonfavorite"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10 Pokemons.Get Pokemon 50 - (Fav = 1)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3080/api/v1/pokemon/50",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						"v1",
+						"pokemon",
+						"50"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
