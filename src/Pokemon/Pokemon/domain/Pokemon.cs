@@ -28,6 +28,9 @@
         public PokemonWeight PokemonWeight => _pokemonWeight;
         public PokemonFavouriteNumberOfTimes PokemonFavouriteNumberOfTimes => _pokemonFavouriteNumberOfTimes;
 
-
+        public void IncreasePokemonFavouriteNumberOfTimes()
+        {
+            _pokemonFavouriteNumberOfTimes = new PokemonFavouriteNumberOfTimes(PokemonFavouriteNumberOfTimes.Value + 1);
+        }
     }
 }
