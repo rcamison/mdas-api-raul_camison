@@ -15,5 +15,16 @@ namespace PokemonTests.Infrastructure.Dto
 
             return pokeApiPokemonDto;
         }
+
+        public static PokeApiPokemonDto Random(int id)
+        {
+            string name = Faker.Name.First();
+            int height = Faker.RandomNumber.Next();
+            int weight = Faker.RandomNumber.Next();
+
+            PokeApiPokemonDto pokeApiPokemonDto = new PokeApiPokemonDto(id, name, height, weight);
+
+            return pokeApiPokemonDto;
+        }
     }
 }
