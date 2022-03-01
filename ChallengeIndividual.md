@@ -33,6 +33,6 @@
 
     `docker logs -f test`
 
-6. Â¡Keep enjoying our App!
+6. ¡Keep enjoying our App!
 
 ### [Return to README](README.md)
