@@ -10,7 +10,7 @@
 
 3. Import `requestsChallengeIndividual.json` clicking **Import** in Postman App
 
-![postmanImport](img/importPostman.png)
+    ![postmanImport](img/importPostman.png)
 
 4. Make Requests:
 
