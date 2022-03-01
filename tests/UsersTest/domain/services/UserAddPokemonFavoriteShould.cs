@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using MediatR;
+using Moq;
 using Users.User.Domain;
 using Xunit;
 
@@ -19,7 +20,8 @@ namespace UsersTest.Domain
             var userRepository = new Mock<IUserRepository>();
             userRepository.Setup(_ => _.Exists(It.IsAny<UserId>())).Returns(true);
             userRepository.Setup(_ => _.Find(It.IsAny<UserId>())).Returns(user);
-            _userAddPokemonFavorite = new UserAddPokemonFavorite(userRepository.Object);
+            var iMediatorMock = new Mock<IMediator>();
+            _userAddPokemonFavorite = new UserAddPokemonFavorite(userRepository.Object, iMediatorMock.Object);
 
             //When
             _userAddPokemonFavorite.Execute(userId, pokemonFavorite);
@@ -34,7 +36,8 @@ namespace UsersTest.Domain
             //Given
             var userRepository = new Mock<IUserRepository>();
             userRepository.Setup(_ => _.Exists(It.IsAny<UserId>())).Returns(false);
-            _userAddPokemonFavorite = new UserAddPokemonFavorite(userRepository.Object);
+            var iMediatorMock = new Mock<IMediator>();
+            _userAddPokemonFavorite = new UserAddPokemonFavorite(userRepository.Object, iMediatorMock.Object);
 
             var userId = UserIdMother.Random();
             var pokemonFavorite = PokemonFavoriteMother.Random();
