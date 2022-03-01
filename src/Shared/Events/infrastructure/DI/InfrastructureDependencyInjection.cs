@@ -8,7 +8,7 @@ namespace Shared.Events.Infrastructure
     {
         public static IServiceCollection AddEventsInfrastructure(this IServiceCollection services)
         {
-            services.AddSingleton(sp => RabbitHutch.CreateBus("amqp://raulcamison:camisonraul@localhost:5672/raulcamisonhost"));
+            services.AddSingleton(sp => RabbitHutch.CreateBus("amqp://raulcamison:camisonraul@mdas-api-raul_camison.rabbitmq:5672/raulcamisonhost"));
 
             return services;
         }
