@@ -1,6 +1,5 @@
-﻿using Pokemon.Pokemon.Domain;
-
-namespace Pokemon.Pokemon.domain.services
+﻿
+namespace Pokemon.Pokemon.Domain
 {
     public class PokemonCreator
     {

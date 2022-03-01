@@ -9,6 +9,7 @@ namespace Pokemon.Pokemon.Infrastructure
         public static IServiceCollection AddPokemonDomain(this IServiceCollection services)
         {
             services.AddTransient<PokemonFinder>();
+            services.AddTransient<PokemonCreator>()
 
             return services;
         }
