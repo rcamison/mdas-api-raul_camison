@@ -1,4 +1,4 @@
-# Project ePokemon | Group 2 
+# Project ePokemon | Raúl Camison
 
 This project was evolved by **Raúl Camisón** for the course Software Design 2 with the programming language: **C#**
 
