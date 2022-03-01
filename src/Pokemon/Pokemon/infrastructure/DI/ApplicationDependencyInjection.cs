@@ -9,6 +9,7 @@ namespace Pokemon.Pokemon.Infrastructure
         public static IServiceCollection AddPokemonApplication(this IServiceCollection services)
         {
             services.AddTransient<GetPokemonByPokemonIdUseCase>();
+            services.AddTransient<PokemonNotifierUseCase>();
             return services;
         }
     }
