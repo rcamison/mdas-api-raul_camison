@@ -1,4 +1,4 @@
-# Raul Camison Individual Challenge
+# Raúl Camisón Individual Challenge
 
 ### Run App Steps:
 
@@ -15,6 +15,8 @@
 4. Make Requests:
 
     Do the following request in order through postman ***(mdas-api-raul_camison)*** by clicking **Send** the data is already setup<br>
+    
+    ![Execute Requests in Postman](img/ExecuteRequests-Postman.png)
 
     **4.1.** Create many Users
     
